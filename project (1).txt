@@ -1,0 +1,147 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JRadioButton;
+import java.awt.BorderLayout;
+import javax.swing.JTextField;
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Frame {
+
+	private JFrame frame;
+	private JTextField textFieldPrincipal;
+	private JTextField textFieldRate;
+	private JTextField textFieldTime;
+	private JTextField textFieldAns;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Frame window = new Frame();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Frame() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setForeground(Color.BLACK);
+		frame.getContentPane().setBackground(Color.RED);
+		frame.setBounds(100, 100, 638, 440);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		textFieldPrincipal = new JTextField();
+		textFieldPrincipal.setBounds(332, 46, 86, 20);
+		frame.getContentPane().add(textFieldPrincipal);
+		textFieldPrincipal.setColumns(10);
+		
+		textFieldRate = new JTextField();
+		textFieldRate.setBounds(332, 93, 86, 20);
+		frame.getContentPane().add(textFieldRate);
+		textFieldRate.setColumns(10);
+		
+		textFieldTime = new JTextField();
+		textFieldTime.setBounds(332, 138, 86, 20);
+		frame.getContentPane().add(textFieldTime);
+		textFieldTime.setColumns(10);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(198, 178, -11, 41);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("CALCULATE ");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int p,r,t,ans;
+				
+				
+				try {
+					p=Integer.parseInt(textFieldPrincipal.getText());
+					r=Integer.parseInt(textFieldRate.getText());
+					t=Integer.parseInt(textFieldTime.getText());
+					ans=(p*r*t)/100;
+					textFieldAns.setText(Integer.toString(ans));
+					
+				}catch(Exception e1) {
+					JOptionPane.showMessageDialog(null, "Please Enter Valid Number");
+				}
+			}
+		});
+		btnNewButton_1.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 18));
+		btnNewButton_1.setBounds(10, 193, 178, 41);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JLabel lblNewLabel = new JLabel("SIMPLE INTEREST IS");
+		lblNewLabel.setFont(new Font("Elephant", Font.PLAIN, 14));
+		lblNewLabel.setBounds(91, 287, 203, 23);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("PRINCIPAL");
+		lblNewLabel_1.setFont(new Font("Elephant", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(91, 46, 126, 20);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("RATE OF INTEREST");
+		lblNewLabel_2.setFont(new Font("Elephant", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(91, 99, 178, 14);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("TIME");
+		lblNewLabel_3.setFont(new Font("Elephant", Font.PLAIN, 14));
+		lblNewLabel_3.setBounds(91, 144, 102, 14);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		textFieldAns = new JTextField();
+		textFieldAns.setBounds(332, 289, 86, 20);
+		frame.getContentPane().add(textFieldAns);
+		textFieldAns.setColumns(10);
+		
+		JButton btnNewButton_2 = new JButton("CLEAR");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldPrincipal.setText("");
+				textFieldRate.setText("");
+				textFieldTime.setText("");
+				textFieldAns.setText("");
+			}
+		});
+		btnNewButton_2.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 18));
+		btnNewButton_2.setBounds(263, 194, 135, 39);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("EXIT");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+			}
+		});
+		btnNewButton_3.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 18));
+		btnNewButton_3.setBounds(465, 198, 126, 38);
+		frame.getContentPane().add(btnNewButton_3);
+	}
+}
